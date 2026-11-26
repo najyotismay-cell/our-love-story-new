@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Me ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;display:flex;
+ justify-content:center;align-items:center;
+ background:radial-gradient(circle,#642052,#190b30);
+ color:white;font-family:Arial;text-align:center;
+}
+.heart{
+ font-size:110px;cursor:pointer;
+ animation:beat 1s infinite;
+ filter:drop-shadow(0 0 20px #ff3d9a);
+}
+@keyframes beat{
+ 0%,100%{transform:scale(1)}
+ 50%{transform:scale(1.2)}
+}
+h1{letter-spacing:3px}
+p{color:#f5cde8}
+</style>
+</head>
+<body>
+<div>
+ <div class="heart" onclick="start()">❤️</div>
+ <h1>OPEN ME</h1>
+ <p>A beautiful surprise is waiting for you ✨</p>
+</div>
+<script>
+function start(){
+ window.location.href="museum.html";
+}
+</script>
+</body>
+</html>
