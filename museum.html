@@ -4,143 +4,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Love Story | Dream Glass Palace</title>
+<title>Our Love Story - Birthday Gallery</title>
 
 <style>
 *{box-sizing:border-box}
 body{
  margin:0;
  font-family:Georgia,serif;
- color:#fff;
+ color:#704b3d;
+ background:linear-gradient(135deg,#fff8ed,#f8ddca,#fff3e5);
  min-height:100vh;
- background:
- radial-gradient(ellipse at 50% 20%,#f9c9e9 0%,transparent 45%),
- linear-gradient(135deg,#21143d,#62416f,#bd83b5,#39234e);
  overflow-x:hidden;
 }
-header{text-align:center;padding:30px 12px 15px}
+header{
+ text-align:center;
+ padding:35px 12px 20px;
+}
+.tag{
+ letter-spacing:4px;
+ font-size:11px;
+ color:#a77b61;
+}
 h1{
- font-size:clamp(30px,6vw,52px);
- margin:8px 0;
- color:#fff0fb;
- text-shadow:0 0 20px #ffb9ed,0 0 35px #e8a9ff;
+ font-size:clamp(32px,7vw,55px);
+ color:#a66e54;
+ margin:15px 0;
+ text-shadow:2px 3px 10px #e9c1a9;
 }
-.subtitle{color:#ffe4f8;letter-spacing:3px;font-size:12px}
-.palace{
- max-width:1100px;
- margin:15px auto 30px;
- padding:22px;
- border:2px solid #f8c9ed;
- border-radius:28px;
- background:linear-gradient(135deg,#ffffff30,#ffffff08);
- box-shadow:0 0 35px #f7a9ed88,inset 0 0 30px #fff2;
- backdrop-filter:blur(14px);
+.subtitle{font-size:15px;color:#99735f}
+.cake{font-size:75px;animation:bounce 2s infinite}
+@keyframes bounce{
+ 0%,100%{transform:translateY(0)}
+ 50%{transform:translateY(-10px)}
 }
-.arch{
- border:3px solid #f7c5e9;
- border-radius:180px 180px 20px 20px;
- padding:30px 15px;
- background:linear-gradient(145deg,#ffffff28,#d7a5e733);
- box-shadow:inset 0 0 45px #fff5,0 0 25px #f8b6e8;
+.container{
+ max-width:1050px;
+ margin:15px auto;
+ padding:20px;
 }
-.gallery-title{text-align:center;color:#ffe3f8;font-size:23px;margin:8px}
-.gallery-sub{text-align:center;color:#fbd8f3;font-size:13px;margin-bottom:25px}
+.welcome{
+ text-align:center;
+ padding:25px 15px;
+ background:#ffffffa8;
+ border:1px solid #e8c6aa;
+ border-radius:25px;
+ box-shadow:0 8px 30px #b9856530;
+}
+.welcome h2{color:#a66e54}
+.gallery-title{
+ text-align:center;
+ margin:35px 0 20px;
+ color:#a66e54;
+ font-size:25px;
+}
 .frames{
  display:grid;
  grid-template-columns:repeat(3,1fr);
- gap:22px;
+ gap:20px;
 }
 .frame{
- min-height:145px;
  padding:9px;
- border:3px solid #f6c9e9;
- border-radius:13px;
- background:linear-gradient(135deg,#fff7ff,#b88bb7,#fff0fa);
- box-shadow:0 0 15px #f5b8ed99,0 10px 22px #160c2c88;
- transform:perspective(700px) rotateY(-3deg);
- transition:.4s;
+ background:linear-gradient(135deg,#fff,#d9ae89,#fff0dd);
+ border:2px solid #d4a47e;
+ border-radius:12px;
+ box-shadow:0 8px 20px #a77b6130;
 }
-.frame:hover{transform:perspective(700px) rotateY(0) translateY(-7px)}
-.frame-inner{
- height:125px;
- background:linear-gradient(135deg,#e8c4ed,#a98ac6);
+.inner{
+ height:155px;
+ background:#f9e8d9;
  border:2px solid white;
  display:flex;
- align-items:center;
  justify-content:center;
- overflow:hidden;
- color:#fff;
+ align-items:center;
  text-align:center;
- font-size:13px;
+ overflow:hidden;
+ color:#a77b61;
+ font-size:14px;
 }
-.frame img{width:100%;height:100%;object-fit:cover}
-.controls{text-align:center;padding:25px 5px}
-.upload{
+.inner img{width:100%;height:100%;object-fit:cover}
+.controls{text-align:center;margin:30px 0}
+.upload,button{
  display:inline-block;
- padding:13px 22px;
- background:linear-gradient(120deg,#f8c8ec,#d69be5);
- color:#48264e;
+ padding:13px 23px;
+ border:0;
  border-radius:30px;
+ background:linear-gradient(120deg,#e9b99b,#c88f70);
+ color:white;
+ font-size:15px;
  font-weight:bold;
  cursor:pointer;
- box-shadow:0 0 18px #f9c5f5;
+ margin:6px;
 }
 input{display:none}
-button{
- border:1px solid #ffe1f8;
- padding:12px 22px;
+.wishes{
+ margin:30px auto;
+ padding:30px 20px;
+ text-align:center;
+ background:#fffaf3;
+ border:2px solid #e8c6aa;
  border-radius:25px;
- background:#ffffff20;
- color:white;
- margin:8px;
- font-size:14px;
- cursor:pointer;
+ box-shadow:0 8px 25px #a77b6125;
 }
-footer{text-align:center;padding:20px;color:#ffe0f6;font-size:14px}
-.sparkle{position:fixed;color:#fff4fc;pointer-events:none;animation:float 5s infinite ease-in-out}
-@keyframes float{0%,100%{transform:translateY(0);opacity:.3}50%{transform:translateY(-25px);opacity:1}}
-@media(max-width:600px){
+.wishes h2{color:#a66e54}
+.wishes p{line-height:1.8}
+footer{
+ text-align:center;
+ padding:25px;
+ color:#9a725e;
+}
+.balloon{
+ position:fixed;
+ top:-50px;
+ font-size:25px;
+ pointer-events:none;
+ animation:fall 9s linear infinite;
+ opacity:.7;
+}
+@keyframes fall{
+ to{transform:translateY(110vh) rotate(180deg)}
+}
+@media(max-width:650px){
  .frames{grid-template-columns:repeat(2,1fr);gap:12px}
- .palace{margin:10px;padding:12px}
- .arch{padding:22px 10px}
- .frame{min-height:120px}
- .frame-inner{height:105px}
+ .inner{height:120px}
+ .container{padding:12px}
 }
 </style>
 </head>
 
 <body>
+
 <header>
- <div class="subtitle">A PALACE MADE OF MEMORIES</div>
- <h1>Our Love Story ♡</h1>
- <div class="subtitle">EVERY PICTURE HAS A STORY</div>
+ <div class="tag">A SPECIAL DAY • A SPECIAL MEMORY</div>
+ <div class="cake">🎂</div>
+ <h1>Happy Birthday! ♡</h1>
+ <div class="subtitle">A beautiful celebration filled with love and happiness</div>
 </header>
 
-<div class="palace">
- <div class="arch">
-  <div class="gallery-title">✧ The Dream Glass Gallery ✧</div>
-  <div class="gallery-sub">Our little universe of beautiful moments</div>
+<div class="container">
 
-  <div class="frames" id="frames">
-   <div class="frame"><div class="frame-inner">♡ Memory 01 ♡</div></div>
-   <div class="frame"><div class="frame-inner">♡ Memory 02 ♡</div></div>
-   <div class="frame"><div class="frame-inner">♡ Memory 03 ♡</div></div>
-   <div class="frame"><div class="frame-inner">♡ Memory 04 ♡</div></div>
-   <div class="frame"><div class="frame-inner">♡ Memory 05 ♡</div></div>
-   <div class="frame"><div class="frame-inner">♡ Memory 06 ♡</div></div>
-  </div>
+ <section class="welcome">
+  <h2>✨ A Day Made Special ✨</h2>
+  <p>
+   Today is all about smiles, happiness and beautiful memories.
+   Let's celebrate this wonderful day together! 🤍
+  </p>
+ </section>
+
+ <h2 class="gallery-title">♡ Our Beautiful Memories ♡</h2>
+
+ <div class="frames" id="frames">
+  <div class="frame"><div class="inner">Memory 01 ♡</div></div>
+  <div class="frame"><div class="inner">Memory 02 ♡</div></div>
+  <div class="frame"><div class="inner">Memory 03 ♡</div></div>
+  <div class="frame"><div class="inner">Memory 04 ♡</div></div>
+  <div class="frame"><div class="inner">Memory 05 ♡</div></div>
+  <div class="frame"><div class="inner">Memory 06 ♡</div></div>
  </div>
 
  <div class="controls">
-  <label class="upload" for="photos">＋ Add Our Memories</label>
+  <label class="upload" for="photos">＋ Upload Birthday Photos</label>
   <input type="file" id="photos" accept="image/*" multiple>
-  <p style="color:#ffe4f8;font-size:12px">Choose your favourite pictures to preview them in the frames ❤️</p>
-  <button onclick="goFullScreen()">⛶ Full Screen</button>
+  <br>
+  <button onclick="fullScreen()">⛶ Full Screen</button>
  </div>
+
+ <section class="wishes">
+  <h2>💌 A Little Birthday Wish</h2>
+  <p>
+   May your life always shine with happiness,
+   your heart be filled with love,
+   and every dream become a beautiful reality.
+  </p>
+  <h2>Happy Birthday! 🎉</h2>
+  <p>With love, always ♡</p>
+ </section>
+
 </div>
 
 <footer>
- Made with love, just for us ♡
+ Made with love • Our Love Story ♡
 </footer>
 
 <script>
@@ -148,29 +190,44 @@ const input=document.getElementById("photos");
 const frames=document.getElementById("frames");
 
 input.addEventListener("change",function(){
- const files=Array.from(this.files).filter(f=>f.type.startsWith("image/"));
+ const files=Array.from(this.files).filter(
+  file=>file.type.startsWith("image/")
+ );
  frames.innerHTML="";
+
  files.forEach(file=>{
   const frame=document.createElement("div");
   frame.className="frame";
+
   const inner=document.createElement("div");
-  inner.className="frame-inner";
+  inner.className="inner";
+
   const img=document.createElement("img");
   img.src=URL.createObjectURL(file);
-  img.alt="Our memory";
+  img.alt="Birthday memory";
+
   inner.appendChild(img);
   frame.appendChild(inner);
   frames.appendChild(frame);
  });
 });
 
-async function goFullScreen(){
- try{
-  await document.documentElement.requestFullscreen();
- }catch(e){
-  alert("Please use your browser's full screen option ❤️");
+function fullScreen(){
+ if(document.documentElement.requestFullscreen){
+  document.documentElement.requestFullscreen().catch(()=>{});
  }
 }
+
+const decorations=["🎈","✨","🤍","🎉"];
+for(let i=0;i<12;i++){
+ const item=document.createElement("div");
+ item.className="balloon";
+ item.textContent=decorations[i%4];
+ item.style.left=(Math.random()*100)+"%";
+ item.style.animationDelay=(Math.random()*8)+"s";
+ document.body.appendChild(item);
+}
 </script>
+
 </body>
 </html>
