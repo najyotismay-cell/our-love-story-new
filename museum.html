@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Memory Museum ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#170d29;color:white;
+ font-family:Arial,sans-serif;text-align:center;
+}
+header{padding:25px 12px}
+h1{color:#ff9dcc}
+p{color:#f5d8ef}
+.room{
+ margin:15px auto;width:92%;max-width:700px;
+ min-height:330px;padding:25px 12px;
+ background:linear-gradient(135deg,#633a6e,#34203f);
+ border:5px solid #c69b83;
+ box-shadow:inset 0 0 40px #160b2d;
+}
+.frames{
+ display:grid;grid-template-columns:repeat(2,1fr);
+ gap:18px;padding:15px;
+}
+.frame{
+ background:#d5ad83;padding:9px;
+ border:4px solid #f2d1a7;
+ min-height:125px;display:flex;
+ align-items:center;justify-content:center;
+}
+.frame img{width:100%;height:115px;object-fit:cover}
+.frame span{color:#493047}
+button{
+ background:#ff5caa;color:white;border:0;
+ padding:13px 20px;border-radius:25px;
+ font-size:15px;margin:8px;
+}
+input{max-width:90%;margin:15px}
+#gallery{margin:15px}
+</style>
+</head>
+<body>
+<header>
+<h1>Our Memory Museum ❤️</h1>
+<p>Every picture tells our love story.</p>
+</header>
+
+<div class="room">
+<h2>Our Beautiful Memories</h2>
+<div class="frames" id="gallery">
+<div class="frame"><span>Memory 1 ❤️</span></div>
+<div class="frame"><span>Memory 2 ❤️</span></div>
+</div>
+</div>
+
+<h3>Upload Your Paintings & Photos 🖼️</h3>
+<input type="file" id="photos" accept="image/*" multiple>
+<p id="message">Choose your favourite memories.</p>
+
+<script>
+const photos=document.getElementById("photos");
+const gallery=document.getElementById("gallery");
+
+photos.addEventListener("change",function(){
+ gallery.innerHTML="";
+ Array.from(this.files).forEach(file=>{
+  if(!file.type.startsWith("image/"))return;
+  const url=URL.createObjectURL(file);
+  const frame=document.createElement("div");
+  frame.className="frame";
+  const img=document.createElement("img");
+  img.src=url;
+  frame.appendChild(img);
+  gallery.appendChild(frame);
+ });
+ document.getElementById("message").textContent=
+ "Your memories are displayed! ❤️";
+});
+</script>
+</body>
+</html>
