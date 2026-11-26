@@ -3,356 +3,272 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Love Story - Birthday Celebration</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Love Story ❤️</title>
 <style>
 *{box-sizing:border-box}
-
 body{
- margin:0;
- min-height:100vh;
- font-family:Georgia,serif;
- color:#704b3d;
- background:linear-gradient(135deg,#fff8ed,#f8ddca,#fff3e5);
- overflow-x:hidden;
+ margin:0;text-align:center;font-family:Georgia,serif;
+ color:#704d48;background:linear-gradient(135deg,#fff8ed,#ffe6df,#fff3e7);
+ overflow-x:hidden
+}
+header{padding:25px 12px}
+h1{font-size:34px;color:#b76e79}
+h2{color:#b76e79}
+.section{padding:20px 14px}
+.card{
+ max-width:850px;margin:15px auto;padding:24px 17px;
+ background:#ffffffd9;border:1px solid #f1d2c6;
+ border-radius:25px;box-shadow:0 8px 25px #965a501c
+}
+button{
+ background:linear-gradient(135deg,#d58e99,#bd7181);
+ color:white;border:0;border-radius:30px;padding:14px 24px;
+ font-size:16px;margin:12px;cursor:pointer
+}
+.balloon{
+ position:fixed;bottom:-90px;font-size:34px;
+ pointer-events:none;z-index:0;animation:float 13s linear infinite
+}
+.b1{left:8%}.b2{left:75%;animation-delay:4s}.b3{left:43%;animation-delay:8s}
+@keyframes float{
+ 0%{transform:translateY(0);opacity:0}
+ 15%{opacity:1}
+ 100%{transform:translateY(-115vh) rotate(20deg);opacity:0}
 }
 
-header{
- text-align:center;
- padding:30px 12px 15px;
+/* Slides */
+.slide{
+ display:none;
+ min-height:75vh;
+ animation:slideIn .8s ease;
+}
+.slide.active{display:block}
+@keyframes slideIn{
+ from{opacity:0;transform:translateX(35px)}
+ to{opacity:1;transform:translateX(0)}
 }
 
-.tag{
- letter-spacing:4px;
- font-size:11px;
- color:#a77b61;
+/* Cake */
+.cake-area{
+ height:270px;display:flex;align-items:flex-end;
+ justify-content:center;position:relative;margin:25px auto 5px
 }
-
-h1{
- font-size:clamp(32px,7vw,54px);
- color:#a66e54;
- margin:15px 0;
- text-shadow:2px 3px 12px #e9c1a9;
+.cake-stand{
+ position:absolute;bottom:0;width:240px;height:15px;
+ background:linear-gradient(#f8d9bd,#c28b70);
+ border-radius:50%
 }
-
-.subtitle{color:#99735f;font-size:14px}
-
-.cake-scene{
- position:relative;
- width:180px;
- height:170px;
- margin:20px auto;
- animation:cakeFloat 2s infinite ease-in-out;
- filter:drop-shadow(0 12px 12px #b9856555);
-}
-
 .cake-bottom{
- position:absolute;
- bottom:15px;
- left:15px;
- width:150px;
- height:55px;
- border-radius:12px 12px 22px 22px;
- background:linear-gradient(90deg,#d58c72,#ffe0c5,#c47d68);
- border:2px solid #fff0df;
+ position:absolute;bottom:15px;width:190px;height:90px;
+ border-radius:13px 13px 20px 20px;
+ background:linear-gradient(90deg,#e9a3a5,#fff0df 45%,#d98c98);
+ box-shadow:inset 0 -10px #d88e94
 }
-
-.cake-middle{
- position:absolute;
- bottom:65px;
- left:30px;
- width:120px;
- height:40px;
- border-radius:12px;
- background:linear-gradient(90deg,#fff0df,#e9b99b,#fff8ed);
- border:2px solid white;
-}
-
 .cake-top{
- position:absolute;
- bottom:100px;
- left:42px;
- width:96px;
- height:15px;
- border-radius:50%;
- background:#fff5e8;
- border:2px solid #e6b99a;
+ position:absolute;bottom:105px;width:135px;height:72px;
+ border-radius:13px 13px 16px 16px;
+ background:linear-gradient(90deg,#f1b8ac,#fff0dc 48%,#dc9a9c);
+ box-shadow:inset 0 -8px #d98c98
 }
-
-.flames{
- position:absolute;
- bottom:115px;
- left:35px;
- width:110px;
- display:flex;
- justify-content:space-around;
- z-index:2;
+.frosting{
+ position:absolute;top:-9px;left:0;width:100%;height:22px;
+ background:#fff3e1;border-radius:50%;
+ box-shadow:0 5px #e6b6a6
 }
-
-.flames span{
- font-size:23px;
- animation:flameGlow .6s infinite alternate;
+.cake-decoration{
+ position:absolute;top:28px;width:100%;
+ font-size:19px;letter-spacing:5px
 }
-
-.cake-plate{
- position:absolute;
- bottom:5px;
- left:0;
- width:180px;
- height:15px;
- border-radius:50%;
- background:linear-gradient(#fff,#d9ad8e);
+.candle{
+ position:absolute;bottom:177px;width:9px;height:40px;
+ border-radius:4px;
+ background:repeating-linear-gradient(45deg,#fff 0 5px,#d58e99 5px 10px)
 }
-
-@keyframes cakeFloat{
- 0%,100%{transform:translateY(0)}
- 50%{transform:translateY(-8px)}
+.candle.one{margin-left:-35px}
+.candle.two{margin-left:0}
+.candle.three{margin-left:35px}
+.flame{
+ position:absolute;top:-23px;left:-5px;font-size:18px;
+ animation:flicker .6s infinite alternate
 }
+@keyframes flicker{to{transform:scale(1.2) rotate(7deg)}}
 
-@keyframes flameGlow{
- from{filter:brightness(.8);transform:scale(.9)}
- to{filter:brightness(1.5);transform:scale(1.1)}
+/* Memories */
+.gallery{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:12px;margin-top:20px
 }
-
-.container{
- max-width:1050px;
- margin:15px auto;
- padding:20px;
+.photo{
+ min-height:145px;background:#fff2e9;
+ border:2px dashed #e4b6aa;border-radius:16px;
+ overflow:hidden;display:flex;align-items:center;
+ justify-content:center;color:#ad8278
 }
+.photo img{width:100%;height:170px;object-fit:cover}
+input[type=file]{max-width:100%;margin:15px auto;display:block}
 
-.welcome{
- text-align:center;
- padding:25px 15px;
- background:#ffffffb8;
- border:1px solid #e8c6aa;
- border-radius:25px;
- box-shadow:0 8px 30px #b9856530;
+/* Letter */
+.envelope{font-size:75px;cursor:pointer;display:inline-block;animation:pulse 1.5s infinite}
+@keyframes pulse{50%{transform:scale(1.12)}}
+.letter{
+ display:none;max-width:550px;margin:20px auto 0;padding:25px 19px;
+ background:#fffaf1;border:2px solid #e8c6a9;border-radius:18px;
+ line-height:1.9;font-size:17px
 }
-
-.welcome h2,.wishes h2{color:#a66e54}
-
-.gallery-title{
- text-align:center;
- margin:35px 0 20px;
- color:#a66e54;
- font-size:25px;
-}
-
-.frames{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:20px;
-}
-
-.frame{
- padding:9px;
- background:linear-gradient(135deg,#fff,#d9ae89,#fff0dd);
- border:2px solid #d4a47e;
- border-radius:12px;
- box-shadow:0 8px 20px #a77b6130;
- transition:.3s;
-}
-
-.frame:hover{transform:translateY(-5px)}
-
-.inner{
- height:155px;
- background:#f9e8d9;
- border:2px solid white;
- display:flex;
- justify-content:center;
- align-items:center;
- text-align:center;
- overflow:hidden;
- color:#a77b61;
- font-size:14px;
-}
-
-.inner img{
- width:100%;
- height:100%;
- object-fit:cover;
-}
-
-.controls{
- text-align:center;
- margin:30px 0;
-}
-
-.upload,button{
- display:inline-block;
- padding:13px 23px;
- border:0;
- border-radius:30px;
- background:linear-gradient(120deg,#e9b99b,#c88f70);
- color:white;
- font-size:15px;
- font-weight:bold;
- cursor:pointer;
- margin:6px;
-}
-
-input{display:none}
-
-.wishes{
- margin:30px auto;
- padding:30px 20px;
- text-align:center;
- background:#fffaf3;
- border:2px solid #e8c6aa;
- border-radius:25px;
- box-shadow:0 8px 25px #a77b6125;
- line-height:1.8;
-}
-
-footer{
- text-align:center;
- padding:25px;
- color:#9a725e;
-}
-
-.decoration{
- position:fixed;
- top:-50px;
- font-size:25px;
- pointer-events:none;
- animation:fall linear infinite;
- opacity:.75;
- z-index:5;
-}
-
-@keyframes fall{
- to{transform:translateY(110vh) rotate(360deg)}
-}
-
-@media(max-width:650px){
- .frames{grid-template-columns:repeat(2,1fr);gap:12px}
- .inner{height:120px}
- .container{padding:12px}
+.letter.show{display:block;animation:slideIn .7s ease}
+.signature{color:#b76e79;font-size:21px;font-style:italic;margin-top:22px}
+footer{padding:25px;color:#a27a72}
+@media(max-width:480px){
+ h1{font-size:29px}
+ .gallery{gap:8px}
+ .photo img{height:140px}
 }
 </style>
 </head>
 
 <body>
+<div class="balloon b1">🎈</div>
+<div class="balloon b2">💗</div>
+<div class="balloon b3">🎈</div>
 
 <header>
- <div class="tag">A SPECIAL DAY • A SPECIAL MEMORY</div>
-
- <div class="cake-scene">
-  <div class="flames">
-   <span>🔥</span>
-   <span>🔥</span>
-   <span>🔥</span>
-  </div>
-  <div class="cake-top"></div>
-  <div class="cake-middle"></div>
-  <div class="cake-bottom"></div>
-  <div class="cake-plate"></div>
- </div>
-
- <h1>Happy Birthday! ♡</h1>
- <div class="subtitle">
-  A beautiful celebration filled with love and happiness
- </div>
+ <h1>Our Love Story ❤️</h1>
+ <p>A little birthday surprise made with love</p>
 </header>
 
-<div class="container">
+<!-- SLIDE 1: BIRTHDAY -->
+<section id="birthdaySlide" class="slide active">
+ <div class="section">
+  <div class="card">
+   <h2>Happy Birthday, Sagarika! 🎂</h2>
+   <p>Today is all about your beautiful smile and happiness.</p>
 
- <section class="welcome">
-  <h2>✨ A Day Made Special ✨</h2>
-  <p>
-   Today is all about smiles, happiness and beautiful memories.
-   Let's celebrate this wonderful day together! 🤍
-  </p>
- </section>
+   <div class="cake-area">
+    <div class="cake-stand"></div>
+    <div class="cake-bottom">
+     <div class="frosting"></div>
+     <div class="cake-decoration">🌸 💗 🌸</div>
+    </div>
+    <div class="cake-top">
+     <div class="frosting"></div>
+     <div class="cake-decoration">🍓 ✨ 🍓</div>
+    </div>
+    <div class="candle one"><span class="flame">🔥</span></div>
+    <div class="candle two"><span class="flame">🔥</span></div>
+    <div class="candle three"><span class="flame">🔥</span></div>
+   </div>
 
- <h2 class="gallery-title">♡ Our Beautiful Memories ♡</h2>
-
- <div class="frames" id="frames">
-  <div class="frame"><div class="inner">Memory 01 ♡</div></div>
-  <div class="frame"><div class="inner">Memory 02 ♡</div></div>
-  <div class="frame"><div class="inner">Memory 03 ♡</div></div>
-  <div class="frame"><div class="inner">Memory 04 ♡</div></div>
-  <div class="frame"><div class="inner">Memory 05 ♡</div></div>
-  <div class="frame"><div class="inner">Memory 06 ♡</div></div>
+   <p>Make a wish and let your dreams shine! ✨</p>
+   <button onclick="celebrate()">Celebrate 🎉</button>
+  </div>
  </div>
+</section>
 
- <div class="controls">
-  <label class="upload" for="photos">
-   ＋ Upload Birthday Photos
-  </label>
+<!-- SLIDE 2: MEMORIES -->
+<section id="memoriesSlide" class="slide">
+ <div class="section">
+  <div class="card">
+   <h2>Our Beautiful Memories 📸</h2>
+   <p>Every picture tells a beautiful story. ❤️</p>
 
-  <input type="file" id="photos" accept="image/*" multiple>
+   <input type="file" accept="image/*" multiple
+   onchange="showPhotos(event)">
 
-  <br>
+   <div class="gallery" id="gallery">
+    <div class="photo">Our Memory 1 💗</div>
+    <div class="photo">Our Memory 2 💗</div>
+    <div class="photo">Our Memory 3 💗</div>
+    <div class="photo">Our Memory 4 💗</div>
+    <div class="photo">Our Memory 5 💗</div>
+    <div class="photo">Our Memory 6 💗</div>
+   </div>
 
-  <button onclick="fullScreen()">⛶ Full Screen</button>
+   <button onclick="showLetter()">Open Your Special Letter 💌</button>
+  </div>
  </div>
+</section>
 
- <section class="wishes">
-  <h2>💌 A Little Birthday Wish</h2>
-  <p>
-   May your life always shine with happiness,
-   your heart be filled with love,
-   and every dream become a beautiful reality.
-  </p>
-  <h2>Happy Birthday! 🎉</h2>
-  <p>With love, always ♡</p>
- </section>
+<!-- SLIDE 3: LETTER -->
+<section id="letterSlide" class="slide">
+ <div class="section">
+  <div class="card">
+   <h2>A Special Surprise For You 💌</h2>
+   <p>Tap the envelope to open your letter.</p>
+   <div class="envelope" onclick="openLetter()">💌</div>
 
-</div>
+   <div class="letter" id="birthdayLetter">
+    <h2>To My Special Sagarika ❤️</h2>
+    <p><strong>Happy Birthday! 🎂</strong></p>
+    <p>
+     Today is your special day, and I wish you
+     a lifetime of happiness, love and beautiful memories.
+    </p>
+    <p>
+     May your smile never fade, may your dreams
+     come true, and may every new day bring you
+     something wonderful.
+    </p>
+    <p>
+     You deserve all the happiness in the world.
+     Keep shining and always be the beautiful person
+     you are.
+    </p>
+    <p><strong>Happy Birthday once again! 💗</strong></p>
+    <div class="signature">
+     With lots of love,<br>
+     Jyotismay ❤️
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
 
-<footer>
- Made with love • Our Love Story ♡
-</footer>
+<footer>Made with love ❤️ | Our Love Story</footer>
 
 <script>
-const input=document.getElementById("photos");
-const frames=document.getElementById("frames");
+function goToSlide(slideId){
+ document.querySelectorAll(".slide").forEach(slide=>{
+  slide.classList.remove("active");
+ });
+ document.getElementById(slideId).classList.add("active");
+ window.scrollTo({top:0,behavior:"smooth"});
+}
 
-input.addEventListener("change",function(){
- const files=Array.from(this.files).filter(
-  file=>file.type.startsWith("image/")
- );
+function celebrate(){
+ goToSlide("memoriesSlide");
+}
 
- frames.innerHTML="";
+function showLetter(){
+ goToSlide("letterSlide");
+}
 
- files.forEach(file=>{
-  const frame=document.createElement("div");
-  frame.className="frame";
+function openLetter(){
+ document.getElementById("birthdayLetter").classList.toggle("show");
+}
 
-  const inner=document.createElement("div");
-  inner.className="inner";
+function showPhotos(event){
+ const files=Array.from(event.target.files).slice(0,6);
+ const gallery=document.getElementById("gallery");
+ gallery.innerHTML="";
 
+ files.forEach((file,index)=>{
+  const photo=document.createElement("div");
+  photo.className="photo";
   const img=document.createElement("img");
   img.src=URL.createObjectURL(file);
-  img.alt="Birthday memory";
-
-  inner.appendChild(img);
-  frame.appendChild(inner);
-  frames.appendChild(frame);
+  img.alt="Memory "+(index+1);
+  photo.appendChild(img);
+  gallery.appendChild(photo);
  });
-});
 
-function fullScreen(){
- if(document.documentElement.requestFullscreen){
-  document.documentElement.requestFullscreen().catch(()=>{});
+ for(let i=files.length;i<6;i++){
+  const placeholder=document.createElement("div");
+  placeholder.className="photo";
+  placeholder.textContent="Our Memory "+(i+1)+" 💗";
+  gallery.appendChild(placeholder);
  }
 }
-
-const decorations=["🎈","✨","🤍","🎉"];
-
-for(let i=0;i<16;i++){
- const item=document.createElement("div");
- item.className="decoration";
- item.textContent=decorations[i%4];
- item.style.left=(Math.random()*100)+"%";
- item.style.animationDuration=(6+Math.random()*8)+"s";
- item.style.animationDelay=(Math.random()*8)+"s";
- document.body.appendChild(item);
-}
 </script>
-
 </body>
 </html>
