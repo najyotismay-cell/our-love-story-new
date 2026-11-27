@@ -163,10 +163,12 @@ button{
  border-radius:18px;line-height:1.9;font-size:17px
 }
 .letter.show{display:block;animation:slideIn .7s ease}
+
 .signature{
  color:#b76e79;font-size:21px;
  font-style:italic;margin-top:22px
 }
+
 footer{padding:25px;color:#a27a72}
 
 @media(max-width:480px){
@@ -340,6 +342,7 @@ function openLetter(){
 }
 
 /* SUPABASE PHOTO STORAGE */
+
 const GALLERY_FUNCTION =
 "https://xeaqfpkyosdkjwybwqxk.supabase.co/functions/v1/birthday-gallery";
 
@@ -347,6 +350,8 @@ const GALLERY_KEY =
 "sb_publishable_jrKT49Jjgw8ivlUdvK0tJg_hLyc078b";
 
 const galleryPassword = sessionStorage.getItem("galleryPassword");
+
+/* LOAD SAVED PHOTOS AND HIDE THEIR UPLOAD BARS */
 
 async function loadSavedPhotos(){
  if(!galleryPassword) return;
@@ -382,8 +387,12 @@ async function loadSavedPhotos(){
   document.querySelectorAll(".photo[data-slot]").forEach(frame=>{
    const slot = Number(frame.dataset.slot);
    const saved = latest.get(slot);
+   const label = frame.querySelector("label");
 
-   if(!saved) return;
+   if(!saved){
+    if(label) label.style.display = "";
+    return;
+   }
 
    const oldImage = frame.querySelector("img.saved-photo");
    if(oldImage) oldImage.remove();
@@ -393,7 +402,11 @@ async function loadSavedPhotos(){
    img.src = saved.url;
    img.alt = "Our Memory " + slot;
 
-   frame.insertBefore(img,frame.querySelector("label"));
+   frame.insertBefore(img,label);
+
+   if(label){
+    label.style.display = "none";
+   }
   });
 
  }catch(error){
@@ -401,8 +414,11 @@ async function loadSavedPhotos(){
  }
 }
 
+/* UPLOAD PHOTOS */
+
 document.querySelectorAll(".memory-upload").forEach(input=>{
  input.addEventListener("change",async function(){
+
   const file = this.files[0];
   if(!file) return;
 
@@ -442,6 +458,8 @@ document.querySelectorAll(".memory-upload").forEach(input=>{
    }
 
    labelText.textContent = "✓ Saved!";
+
+   /* Reload saved photos and hide the upload bar */
    await loadSavedPhotos();
 
   }catch(error){
@@ -453,8 +471,9 @@ document.querySelectorAll(".memory-upload").forEach(input=>{
  });
 });
 
-/* Load saved photos when the page opens */
+/* LOAD PHOTOS WHEN WEBSITE OPENS */
 loadSavedPhotos();
+
 </script>
 
 </body>
