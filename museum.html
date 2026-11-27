@@ -5,32 +5,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Our Love Story ❤️</title>
+
 <style>
 *{box-sizing:border-box}
+
 body{
  margin:0;text-align:center;font-family:Georgia,serif;
- color:#704d48;background:linear-gradient(135deg,#fff8ed,#ffe6df,#fff3e7);
+ color:#704d48;
+ background:linear-gradient(135deg,#fff8ed,#ffe6df,#fff3e7);
  overflow-x:hidden
 }
+
 header{padding:25px 12px}
 h1{font-size:34px;color:#b76e79}
 h2{color:#b76e79}
 .section{padding:20px 14px}
+
 .card{
  max-width:850px;margin:15px auto;padding:24px 17px;
  background:#ffffffd9;border:1px solid #f1d2c6;
  border-radius:25px;box-shadow:0 8px 25px #965a501c
 }
+
 button{
  background:linear-gradient(135deg,#d58e99,#bd7181);
  color:white;border:0;border-radius:30px;padding:14px 24px;
  font-size:16px;margin:12px;cursor:pointer
 }
+
 .balloon{
  position:fixed;bottom:-90px;font-size:34px;
  pointer-events:none;z-index:0;animation:float 13s linear infinite
 }
-.b1{left:8%}.b2{left:75%;animation-delay:4s}.b3{left:43%;animation-delay:8s}
+.b1{left:8%}
+.b2{left:75%;animation-delay:4s}
+.b3{left:43%;animation-delay:8s}
+
 @keyframes float{
  0%{transform:translateY(0);opacity:0}
  15%{opacity:1}
@@ -41,9 +51,10 @@ button{
 .slide{
  display:none;
  min-height:75vh;
- animation:slideIn .8s ease;
+ animation:slideIn .8s ease
 }
 .slide.active{display:block}
+
 @keyframes slideIn{
  from{opacity:0;transform:translateX(35px)}
  to{opacity:1;transform:translateX(0)}
@@ -92,42 +103,83 @@ button{
  position:absolute;top:-23px;left:-5px;font-size:18px;
  animation:flicker .6s infinite alternate
 }
-@keyframes flicker{to{transform:scale(1.2) rotate(7deg)}}
+@keyframes flicker{
+ to{transform:scale(1.2) rotate(7deg)}
+}
 
 /* Memories */
 .gallery{
- display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
  gap:12px;margin-top:20px
 }
+
 .photo{
- min-height:145px;background:#fff2e9;
- border:2px dashed #e4b6aa;border-radius:16px;
- overflow:hidden;display:flex;align-items:center;
- justify-content:center;color:#ad8278
+ min-height:170px;
+ background:#fff2e9;
+ border:2px dashed #e4b6aa;
+ border-radius:16px;
+ overflow:hidden;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ gap:8px;
+ color:#ad8278;
+ padding:8px
 }
-.photo img{width:100%;height:170px;object-fit:cover}
-input[type=file]{max-width:100%;margin:15px auto;display:block}
+
+.photo img{
+ width:100%;
+ height:170px;
+ object-fit:cover;
+ border-radius:10px
+}
+
+.photo label{
+ display:inline-block;
+ background:#f4d8d3;
+ color:#985d67;
+ border-radius:20px;
+ padding:9px 14px;
+ font-size:13px;
+ cursor:pointer
+}
+
+.memory-upload{display:none}
 
 /* Letter */
-.envelope{font-size:75px;cursor:pointer;display:inline-block;animation:pulse 1.5s infinite}
-@keyframes pulse{50%{transform:scale(1.12)}}
+.envelope{
+ font-size:75px;cursor:pointer;
+ display:inline-block;animation:pulse 1.5s infinite
+}
+@keyframes pulse{
+ 50%{transform:scale(1.12)}
+}
+
 .letter{
  display:none;max-width:550px;margin:20px auto 0;padding:25px 19px;
- background:#fffaf1;border:2px solid #e8c6a9;border-radius:18px;
- line-height:1.9;font-size:17px
+ background:#fffaf1;border:2px solid #e8c6a9;
+ border-radius:18px;line-height:1.9;font-size:17px
 }
 .letter.show{display:block;animation:slideIn .7s ease}
-.signature{color:#b76e79;font-size:21px;font-style:italic;margin-top:22px}
+.signature{
+ color:#b76e79;font-size:21px;
+ font-style:italic;margin-top:22px
+}
 footer{padding:25px;color:#a27a72}
+
 @media(max-width:480px){
  h1{font-size:29px}
  .gallery{gap:8px}
  .photo img{height:140px}
+ .photo{min-height:150px}
 }
 </style>
 </head>
 
 <body>
+
 <div class="balloon b1">🎈</div>
 <div class="balloon b2">💗</div>
 <div class="balloon b3">🎈</div>
@@ -172,48 +224,57 @@ footer{padding:25px;color:#a27a72}
    <h2>Our Beautiful Memories 📸</h2>
    <p>Every picture tells a beautiful story. ❤️</p>
 
-   <input type="file" accept="image/*" multiple
-   onchange="showPhotos(event)">
+   <div class="gallery" id="gallery">
 
-   
-<div class="gallery" id="gallery">
-  <div class="photo" data-slot="1">
-    Our Memory 1 💗
-    <label>＋ Add Photo
+    <div class="photo" data-slot="1">
+     <span>Our Memory 1 💗</span>
+     <label>
+      <span>＋ Add Photo</span>
       <input type="file" accept="image/*" class="memory-upload">
-    </label>
-  </div>
-  <div class="photo" data-slot="2">
-    Our Memory 2 💗
-    <label>＋ Add Photo
+     </label>
+    </div>
+
+    <div class="photo" data-slot="2">
+     <span>Our Memory 2 💗</span>
+     <label>
+      <span>＋ Add Photo</span>
       <input type="file" accept="image/*" class="memory-upload">
-    </label>
-  </div>
-  <div class="photo" data-slot="3">
-    Our Memory 3 💗
-    <label>＋ Add Photo
+     </label>
+    </div>
+
+    <div class="photo" data-slot="3">
+     <span>Our Memory 3 💗</span>
+     <label>
+      <span>＋ Add Photo</span>
       <input type="file" accept="image/*" class="memory-upload">
-    </label>
-  </div>
-  <div class="photo" data-slot="4">
-    Our Memory 4 💗
-    <label>＋ Add Photo
+     </label>
+    </div>
+
+    <div class="photo" data-slot="4">
+     <span>Our Memory 4 💗</span>
+     <label>
+      <span>＋ Add Photo</span>
       <input type="file" accept="image/*" class="memory-upload">
-    </label>
-  </div>
-  <div class="photo" data-slot="5">
-    Our Memory 5 💗
-    <label>＋ Add Photo
+     </label>
+    </div>
+
+    <div class="photo" data-slot="5">
+     <span>Our Memory 5 💗</span>
+     <label>
+      <span>＋ Add Photo</span>
       <input type="file" accept="image/*" class="memory-upload">
-    </label>
-  </div>
-  <div class="photo" data-slot="6">
-    Our Memory 6 💗
-    <label>＋ Add Photo
+     </label>
+    </div>
+
+    <div class="photo" data-slot="6">
+     <span>Our Memory 6 💗</span>
+     <label>
+      <span>＋ Add Photo</span>
       <input type="file" accept="image/*" class="memory-upload">
-    </label>
-  </div>
-</div>
+     </label>
+    </div>
+
+   </div>
 
    <button onclick="showLetter()">Open Your Special Letter 💌</button>
   </div>
@@ -278,29 +339,123 @@ function openLetter(){
  document.getElementById("birthdayLetter").classList.toggle("show");
 }
 
-function showPhotos(event){
- const files=Array.from(event.target.files).slice(0,6);
- const gallery=document.getElementById("gallery");
- gallery.innerHTML="";
+/* SUPABASE PHOTO STORAGE */
+const GALLERY_FUNCTION =
+"https://xeaqfpkyosdkjwybwqxk.supabase.co/functions/v1/birthday-gallery";
 
- files.forEach((file,index)=>{
-  const photo=document.createElement("div");
-  photo.className="photo";
-  const img=document.createElement("img");
-  img.src=URL.createObjectURL(file);
-  img.alt="Memory "+(index+1);
-  photo.appendChild(img);
-  gallery.appendChild(photo);
- });
+const GALLERY_KEY =
+"sb_publishable_jrKT49Jjgw8ivlUdvK0tJg_hLyc078b";
 
- for(let i=files.length;i<6;i++){
-  const placeholder=document.createElement("div");
-  placeholder.className="photo";
-  placeholder.textContent="Our Memory "+(i+1)+" 💗";
-  gallery.appendChild(placeholder);
+const galleryPassword = sessionStorage.getItem("galleryPassword");
+
+async function loadSavedPhotos(){
+ if(!galleryPassword) return;
+
+ try{
+  const response = await fetch(GALLERY_FUNCTION,{
+   method:"POST",
+   headers:{
+    "Content-Type":"application/json",
+    "apikey":GALLERY_KEY,
+    "Authorization":"Bearer "+GALLERY_KEY
+   },
+   body:JSON.stringify({
+    action:"list",
+    password:galleryPassword
+   })
+  });
+
+  const result = await response.json();
+
+  if(!response.ok){
+   throw new Error(result.error || "Could not load photos.");
+  }
+
+  const latest = new Map();
+
+  (result.photos || []).forEach(photo=>{
+   if(!latest.has(photo.slot)){
+    latest.set(photo.slot,photo);
+   }
+  });
+
+  document.querySelectorAll(".photo[data-slot]").forEach(frame=>{
+   const slot = Number(frame.dataset.slot);
+   const saved = latest.get(slot);
+
+   if(!saved) return;
+
+   const oldImage = frame.querySelector("img.saved-photo");
+   if(oldImage) oldImage.remove();
+
+   const img = document.createElement("img");
+   img.className = "saved-photo";
+   img.src = saved.url;
+   img.alt = "Our Memory " + slot;
+
+   frame.insertBefore(img,frame.querySelector("label"));
+  });
+
+ }catch(error){
+  console.error("Photo loading error:",error);
  }
 }
+
+document.querySelectorAll(".memory-upload").forEach(input=>{
+ input.addEventListener("change",async function(){
+  const file = this.files[0];
+  if(!file) return;
+
+  if(!galleryPassword){
+   alert("Please unlock the gallery using your password first.");
+   this.value="";
+   return;
+  }
+
+  const frame = this.closest(".photo");
+  const slot = Number(frame.dataset.slot);
+  const label = this.closest("label");
+  const labelText = label.querySelector("span");
+
+  try{
+   labelText.textContent = "Uploading...";
+
+   const form = new FormData();
+   form.append("action","upload");
+   form.append("password",galleryPassword);
+   form.append("slot",String(slot));
+   form.append("file",file);
+
+   const response = await fetch(GALLERY_FUNCTION,{
+    method:"POST",
+    headers:{
+     "apikey":GALLERY_KEY,
+     "Authorization":"Bearer "+GALLERY_KEY
+    },
+    body:form
+   });
+
+   const result = await response.json();
+
+   if(!response.ok){
+    throw new Error(result.error || "Photo upload failed.");
+   }
+
+   labelText.textContent = "✓ Saved!";
+   await loadSavedPhotos();
+
+  }catch(error){
+   alert(error.message || "Photo upload failed.");
+   labelText.textContent = "＋ Add Photo";
+  }
+
+  this.value="";
+ });
+});
+
+/* Load saved photos when the page opens */
+loadSavedPhotos();
 </script>
-</script>
+
 </body>
 </html>
