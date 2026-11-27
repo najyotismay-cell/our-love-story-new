@@ -270,5 +270,111 @@ function showPhotos(event){
  }
 }
 </script>
+ 
+<!-- PERMANENT BIRTHDAY PHOTO GALLERY -->
+<section id="permanentGallery" style="max-width:900px;margin:40px auto;padding:25px;text-align:center;background:#fff5ee;border-radius:25px;color:#70465b;">
+  <h2>Our Beautiful Memories ❤️</h2>
+  <p>Upload and keep your special memories together.</p>
+
+  <input type="file" id="photoFiles" accept="image/*" multiple>
+  <br><br>
+  <button onclick="uploadPhotos()">Save Our Photos ❤️</button>
+  <p id="uploadStatus"></p>
+  <div id="savedPhotos" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;"></div>
+</section>
+
+<script>
+const GALLERY_FUNCTION =
+"https://xeaqfpkyosdkjwybwqxk.supabase.co/functions/v1/birthday-gallery";
+
+const GALLERY_PUBLIC_KEY =
+"sb_publishable_jrKT49Jjgw8ivlUdvK0tJg_hLyc078b";
+
+async function galleryRequest(data) {
+  const response = await fetch(GALLERY_FUNCTION, {
+    method: "POST",
+    headers: {
+      "apikey": GALLERY_PUBLIC_KEY,
+      "Authorization": "Bearer " + GALLERY_PUBLIC_KEY,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+  const result = await response.json();
+  if (!response.ok) throw new Error(result.error || "Request failed");
+  return result;
+}
+
+async function loadSavedPhotos() {
+  const password = sessionStorage.getItem("galleryPassword");
+  if (!password) return;
+
+  try {
+    const result = await galleryRequest({
+      action: "list",
+      password
+    });
+
+    const gallery = document.getElementById("savedPhotos");
+    gallery.innerHTML = "";
+
+    result.photos.forEach(photo => {
+      const img = document.createElement("img");
+      img.src = photo.url;
+      img.alt = "Our memory";
+      img.style.cssText = "width:100%;height:170px;object-fit:cover;border-radius:15px;";
+      gallery.appendChild(img);
+    });
+  } catch (error) {
+    document.getElementById("uploadStatus").textContent = error.message;
+  }
+}
+
+async function uploadPhotos() {
+  const files = document.getElementById("photoFiles").files;
+  const password = sessionStorage.getItem("galleryPassword");
+  const status = document.getElementById("uploadStatus");
+
+  if (!password) {
+    status.textContent = "Please unlock the gallery first.";
+    return;
+  }
+  if (!files.length) {
+    status.textContent = "Please choose some photos first.";
+    return;
+  }
+
+  try {
+    for (const file of files) {
+      status.textContent = "Saving " + file.name + "...";
+
+      const form = new FormData();
+      form.append("action", "upload");
+      form.append("password", password);
+      form.append("file", file);
+
+      const response = await fetch(GALLERY_FUNCTION, {
+        method: "POST",
+        headers: {
+          "apikey": GALLERY_PUBLIC_KEY,
+          "Authorization": "Bearer " + GALLERY_PUBLIC_KEY
+        },
+        body: form
+      });
+
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "Upload failed");
+    }
+
+    status.textContent = "Your photos have been saved! ❤️";
+    document.getElementById("photoFiles").value = "";
+    await loadSavedPhotos();
+  } catch (error) {
+    status.textContent = error.message;
+  }
+}
+
+loadSavedPhotos();
+</script>
 </body>
 </html>
