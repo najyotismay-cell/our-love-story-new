@@ -175,14 +175,45 @@ footer{padding:25px;color:#a27a72}
    <input type="file" accept="image/*" multiple
    onchange="showPhotos(event)">
 
-   <div class="gallery" id="gallery">
-    <div class="photo">Our Memory 1 💗</div>
-    <div class="photo">Our Memory 2 💗</div>
-    <div class="photo">Our Memory 3 💗</div>
-    <div class="photo">Our Memory 4 💗</div>
-    <div class="photo">Our Memory 5 💗</div>
-    <div class="photo">Our Memory 6 💗</div>
-   </div>
+   
+<div class="gallery" id="gallery">
+  <div class="photo" data-slot="1">
+    Our Memory 1 💗
+    <label>＋ Add Photo
+      <input type="file" accept="image/*" class="memory-upload">
+    </label>
+  </div>
+  <div class="photo" data-slot="2">
+    Our Memory 2 💗
+    <label>＋ Add Photo
+      <input type="file" accept="image/*" class="memory-upload">
+    </label>
+  </div>
+  <div class="photo" data-slot="3">
+    Our Memory 3 💗
+    <label>＋ Add Photo
+      <input type="file" accept="image/*" class="memory-upload">
+    </label>
+  </div>
+  <div class="photo" data-slot="4">
+    Our Memory 4 💗
+    <label>＋ Add Photo
+      <input type="file" accept="image/*" class="memory-upload">
+    </label>
+  </div>
+  <div class="photo" data-slot="5">
+    Our Memory 5 💗
+    <label>＋ Add Photo
+      <input type="file" accept="image/*" class="memory-upload">
+    </label>
+  </div>
+  <div class="photo" data-slot="6">
+    Our Memory 6 💗
+    <label>＋ Add Photo
+      <input type="file" accept="image/*" class="memory-upload">
+    </label>
+  </div>
+</div>
 
    <button onclick="showLetter()">Open Your Special Letter 💌</button>
   </div>
